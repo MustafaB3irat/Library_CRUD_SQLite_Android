@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <group android:checkableBehavior="single">
+
+
+        <item
+            android:id="@+id/browse_books"
+            android:icon="@drawable/ic_books_stack_of_three"
+            android:title="Available Books" />
+
+        <item
+            android:id="@+id/search_book"
+            android:icon="@drawable/ic_search"
+            android:title="Search for a Book" />
+
+        <item
+            android:id="@+id/cart"
+            android:icon="@drawable/ic_shopping_cart"
+            android:title="My Cart" />
+
+        <item
+            android:id="@+id/about_us"
+            android:icon="@drawable/ic_email_black_24dp"
+            android:title="About Us" />
+
+
+    </group>
+
+    <item android:title="Profile">
+
+        <menu>
+
+            <item
+                android:id="@+id/my_profile"
+                android:icon="@drawable/ic_profile"
+                android:iconTint="@android:color/black"
+                android:title="My Profile" />
+
+
+            <item
+                android:id="@+id/logout"
+                android:icon="@drawable/ic_logout"
+                android:title="Logout" />
+
+        </menu>
+
+    </item>
+
+
+</menu>
