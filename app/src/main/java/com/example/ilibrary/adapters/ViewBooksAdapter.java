@@ -3,6 +3,7 @@ package com.example.ilibrary.adapters;
 import android.content.DialogInterface;
 import android.database.Cursor;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
@@ -55,7 +56,7 @@ public class ViewBooksAdapter extends RecyclerView.Adapter<ViewBooksAdapter.Book
 
         Book book = books.get(position);
 
-        if (type != 1) {
+        if (type != 1 && !book.getIsbn().equals("")) {
 
             holder.bookCardviewBinding.setBook(book);
 
@@ -69,7 +70,7 @@ public class ViewBooksAdapter extends RecyclerView.Adapter<ViewBooksAdapter.Book
                 holder.bookCardviewBinding.reserve.setEnabled(false);
             }
 
-        } else {
+        } else if (!book.getIsbn().equals("")) {
 
             cursor.moveToNext();
             if (Long.parseLong(book.getIsbn()) == cursor.getLong(cursor.getColumnIndex("isbn"))) {
@@ -84,6 +85,12 @@ public class ViewBooksAdapter extends RecyclerView.Adapter<ViewBooksAdapter.Book
             }
 
 
+        } else {
+            holder.bookCardviewBinding.reserve.setVisibility(View.GONE);
+            holder.bookCardviewBinding.bookAuthor.setVisibility(View.GONE);
+            holder.bookCardviewBinding.bookPages.setVisibility(View.GONE);
+            holder.bookCardviewBinding.bookPublisher.setVisibility(View.GONE);
+            holder.bookCardviewBinding.setBook(book);
         }
 
 

@@ -2,6 +2,13 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+
+        <variable
+            name="user"
+            type="com.example.ilibrary.views.SignInActivity" />
+    </data>
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -16,8 +23,8 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/user_avatar"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_marginTop="35dp"
             android:src="@drawable/ic_uploadavatar"
             app:layout_constraintEnd_toEndOf="parent"
@@ -30,7 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:gravity="center"
-            android:text="Welcome Mustafa Birat,\n Feel home"
+            android:text="@{`Welcome `+ user.username + ` ,\n Feel home`}"
             android:textColor="#1e2728"
             android:textSize="15sp"
             android:textStyle="bold"
@@ -61,7 +68,7 @@
             android:id="@+id/email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="150dp"
+            android:layout_marginTop="70dp"
             android:text="mustafaadwi@gmail.com"
             android:textColor="@android:color/white"
             android:textSize="20sp"
@@ -81,6 +88,16 @@
             app:layout_constraintStart_toStartOf="@id/email"
             app:layout_constraintTop_toBottomOf="@id/email" />
 
+        <TextView
+            android:id="@+id/gender_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:textColor="#F20000"
+            android:textSize="11sp"
+            app:layout_constraintStart_toEndOf="@id/gender_text"
+            app:layout_constraintTop_toTopOf="@id/gender_text" />
+
         <RadioGroup
             android:id="@+id/gender"
             android:layout_width="wrap_content"
@@ -92,7 +109,7 @@
             app:layout_constraintTop_toBottomOf="@id/gender_text">
 
             <RadioButton
-                android:id="@+id/male"
+                android:id="@+id/male_update"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
@@ -103,12 +120,12 @@
                 android:textStyle="italic" />
 
             <RadioButton
-                android:id="@+id/female"
+                android:id="@+id/female_update"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
                 android:buttonTint="@android:color/white"
-                android:text="FeMale"
+                android:text="Female"
                 android:textColor="@android:color/white"
                 android:textSize="14sp"
                 android:textStyle="italic" />
@@ -128,6 +145,7 @@
             app:layout_constraintTop_toBottomOf="@id/gender" />
 
         <EditText
+            android:id="@+id/age"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -141,6 +159,32 @@
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@id/age_text"
             app:layout_constraintTop_toTopOf="@id/age_text" />
+
+        <TextView
+            android:id="@+id/age_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:textColor="#F20000"
+            android:textSize="11sp"
+            app:layout_constraintStart_toEndOf="@id/age"
+            app:layout_constraintTop_toTopOf="@id/age" />
+
+        <Button
+            android:id="@+id/update"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="35dp"
+            android:layout_marginEnd="35dp"
+            android:background="@drawable/button_shape"
+            android:text="UPDATE"
+            android:textColor="@android:color/white"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/age" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

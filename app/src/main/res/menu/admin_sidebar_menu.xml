@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+
+        <item
+            android:id="@+id/reserved_books_admin"
+            android:icon="@drawable/ic_books_stack_of_three"
+            android:title="Reserved Books" />
+
+        <item
+            android:id="@+id/block_unblock_users"
+            android:icon="@drawable/ic_blocked"
+            android:title="Block/Unblock Users" />
+
+
+    </group>
+
+    <item android:title="Profile">
+
+        <menu>
+
+            <item
+                android:id="@+id/logout_admin"
+                android:icon="@drawable/ic_logout"
+                android:title="Logout" />
+
+        </menu>
+
+    </item>
+
+
+</menu>

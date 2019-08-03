@@ -3,6 +3,7 @@ package com.example.ilibrary.interfaces;
 import android.database.Cursor;
 
 import com.example.ilibrary.models.data.Book;
+import com.example.ilibrary.models.data.ReservedBook;
 
 import java.util.List;
 

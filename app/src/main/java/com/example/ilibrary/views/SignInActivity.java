@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
@@ -68,42 +69,47 @@ public class SignInActivity extends AppCompatActivity implements Signin.SignInVi
                 sharedPreferences.edit().clear().apply();
             }
 
-            Cursor cursor = signin();
+            if (signInBinding.username.getText().toString().equals("sael") && signInBinding.password.getText().toString().equals("advancedproject123")) {
 
-            if (cursor.getCount() == 0) {
-
-                wrongEmail();
-                wrongPassword();
+                Intent intent = new Intent(this.getBaseContext(), AdminActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                username = "Sael | Admin";
+                startActivity(intent);
+                overridePendingTransition(0, 0);
 
             } else {
+                Cursor cursor = signin();
 
-                do {
-                    Intent intent = new Intent(this, UserActivity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                if (cursor.getCount() == 0) {
 
-                    cursor.moveToFirst();
+                    wrongPassword();
+
+                } else {
+                    if (cursor.moveToFirst() && cursor.getInt(cursor.getColumnIndex("blocked")) != 1) {
+                        Intent intent = new Intent(this, UserActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
 
 
-                    User user = new User(cursor.getString(cursor.getColumnIndexOrThrow(USERNAME)), cursor.getColumnName(cursor.getColumnIndexOrThrow(PASSWORD)), cursor.getString(cursor.getColumnIndexOrThrow("email")), cursor.getString(cursor.getColumnIndexOrThrow("gender")), cursor.getInt(cursor.getColumnIndexOrThrow("age")));
-                    intent.putExtra("USER", user);
-                    username = cursor.getString(cursor.getColumnIndexOrThrow(USERNAME));
-                    startActivity(intent);
-                    overridePendingTransition(0, 0);
-                } while (cursor.moveToNext());
+                        User user = new User(cursor.getString(cursor.getColumnIndexOrThrow(USERNAME)), cursor.getColumnName(cursor.getColumnIndexOrThrow(PASSWORD)), cursor.getString(cursor.getColumnIndexOrThrow("email")), cursor.getString(cursor.getColumnIndexOrThrow("gender")), cursor.getInt(cursor.getColumnIndexOrThrow("age")));
+                        intent.putExtra("USER", user);
+                        username = cursor.getString(cursor.getColumnIndexOrThrow(USERNAME));
+                        startActivity(intent);
+                        overridePendingTransition(0, 0);
 
-                cursor.close();
+                    } else {
+                        Toast.makeText(this, "Sorry you've been blocked by Admin", Toast.LENGTH_SHORT).show();
+                    }
+
+                    cursor.close();
+                }
+
             }
         });
+
     }
 
     @Override
     public void onTextChange() {
-        signInBinding.username.addTextChangedListener(new MyTextWatcher(() -> {
-
-            signInBinding.emailError.setText("");
-
-        }));
-
         signInBinding.password.addTextChangedListener(new MyTextWatcher(() -> {
 
             signInBinding.passwordError.setText("");
@@ -133,7 +139,7 @@ public class SignInActivity extends AppCompatActivity implements Signin.SignInVi
     @Override
     public void wrongPassword() {
 
-        signInBinding.passwordError.setText("Wrong Password!");
+        signInBinding.passwordError.setText("Wrong Password or Password!");
 
     }
 

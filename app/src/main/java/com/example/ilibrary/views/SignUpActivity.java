@@ -67,7 +67,14 @@ public class SignUpActivity extends AppCompatActivity implements SignUp.SignUpVi
 
             if (signUp()) {
 
-                Toast.makeText(this, "Success!", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(this, UserActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                SignInActivity.username = signUpBinding.username.getText().toString();
+                finish();
+                startActivity(intent);
+                overridePendingTransition(0, 0);
+
+
             } else {
                 Toast.makeText(this, "Failed!", Toast.LENGTH_SHORT).show();
 
@@ -181,7 +188,7 @@ public class SignUpActivity extends AppCompatActivity implements SignUp.SignUpVi
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
-        if(hasFocus){
+        if (hasFocus) {
             YoYo.with(Techniques.Bounce).duration(500).repeat(2).playOn(signUpBinding.libraryLogo);
         }
     }

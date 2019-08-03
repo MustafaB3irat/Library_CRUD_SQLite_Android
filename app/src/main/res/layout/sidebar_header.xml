@@ -2,6 +2,13 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+
+        <variable
+            name="user"
+            type="com.example.ilibrary.views.SignInActivity" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="280dp"
@@ -14,26 +21,27 @@
             app:srcCompat="@drawable/wallpaper" />
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/avatar"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:id="@+id/header_avatar"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:layout_marginTop="30dp"
+            android:src="@drawable/avatar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/username"
+            android:id="@+id/header_username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:text="Mustafa"
+            android:text="@{user.username}"
             android:textColor="#1e2728"
-            android:textSize="15sp"
+            android:textSize="25sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@id/avatar"
-            app:layout_constraintStart_toStartOf="@+id/avatar"
-            app:layout_constraintTop_toBottomOf="@+id/avatar" />
+            app:layout_constraintEnd_toEndOf="@id/header_avatar"
+            app:layout_constraintStart_toStartOf="@+id/header_avatar"
+            app:layout_constraintTop_toBottomOf="@+id/header_avatar" />
 
 
         <TextView
@@ -44,9 +52,9 @@
             android:textColor="#1e2728"
             android:textSize="12sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@id/username"
-            app:layout_constraintStart_toStartOf="@+id/username"
-            app:layout_constraintTop_toBottomOf="@+id/username" />
+            app:layout_constraintEnd_toEndOf="@id/header_username"
+            app:layout_constraintStart_toStartOf="@+id/header_username"
+            app:layout_constraintTop_toBottomOf="@+id/header_username" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

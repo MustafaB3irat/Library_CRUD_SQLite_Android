@@ -3,6 +3,7 @@
     <string name="dont_have_account">don\'t have Account? <b>Sign Up</b></string>
     <string name="already_have_account">Already have account? <b>Sign In</b></string>
     <string-array name="search_entries">
+        <item>Choose One</item>
         <item>Num Of Pages</item>
         <item>Publisher</item>
         <item>Both</item>

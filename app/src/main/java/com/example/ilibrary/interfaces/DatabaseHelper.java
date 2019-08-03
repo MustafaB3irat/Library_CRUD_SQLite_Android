@@ -10,9 +10,17 @@ public interface DatabaseHelper {
 
     Cursor getBooks();
 
+    Cursor getBook(String isbn);
+
+    boolean cancelReservationByAdmin(String isbn , String username);
+
     Cursor getReservedBooks(String username);
 
+    boolean cancelAllReservationsForBlockedUser();
+
     boolean cancelReservation(String isbn);
+
+    int getUserStatus();
 
     boolean reserveABook(long isbn, String username);
 
@@ -20,9 +28,14 @@ public interface DatabaseHelper {
 
     Cursor getUsers();
 
+    Cursor getCurrentUser();
+
+    boolean updateUser(String gender , int age);
+
+
     Cursor getReservations();
 
-    boolean blockAUser(String username);
+    boolean blockAUser();
 
     Cursor searchForBooks(int fromPages, int toPages, String publisher);
 
