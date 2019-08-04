@@ -62,9 +62,9 @@ public class DatabaseHelper extends SQLiteOpenHelper implements com.example.ilib
     }
 
     @Override
-    public boolean cancelAllReservationsForBlockedUser() {
+    public boolean cancelAllReservationsForBlockedUser(String username) {
         db = this.getWritableDatabase();
-        db.execSQL("delete from " + RESERVED_BOOKS + " where username = '" + SignInActivity.username + "'");
+        db.execSQL("delete from " + RESERVED_BOOKS + " where username = '" + username + "'");
         return true;
     }
 
@@ -76,9 +76,9 @@ public class DatabaseHelper extends SQLiteOpenHelper implements com.example.ilib
     }
 
     @Override
-    public int getUserStatus() {
+    public int getUserStatus(String username) {
         db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery("select blocked from " + USERS + " where username = '" + SignInActivity.username + "'", null);
+        Cursor cursor = db.rawQuery("select blocked from " + USERS + " where username = '" + username + "'", null);
 
         if (cursor.moveToFirst()) {
             return cursor.getInt(cursor.getColumnIndex("blocked"));
@@ -134,6 +134,14 @@ public class DatabaseHelper extends SQLiteOpenHelper implements com.example.ilib
     }
 
     @Override
+    public Cursor getUsersByName(String username) {
+
+        db = this.getWritableDatabase();
+        return db.rawQuery("select * from users where username like '" + username + "%'", null);
+
+    }
+
+    @Override
     public Cursor getCurrentUser() {
         db = this.getWritableDatabase();
         return db.rawQuery("select * from users where username = '" + SignInActivity.username + "'", null);
@@ -158,16 +166,25 @@ public class DatabaseHelper extends SQLiteOpenHelper implements com.example.ilib
     }
 
     @Override
-    public boolean blockAUser() {
+    public boolean blockAUser(String username) {
 
         db = this.getWritableDatabase();
 
-        db.execSQL("update users set blocked = 1 where username = '" + SignInActivity.username + "'");
+        db.execSQL("update users set blocked = 1 where username = '" + username + "'");
 
-        if (cancelAllReservationsForBlockedUser())
+        if (cancelAllReservationsForBlockedUser(username)) {
             return true;
-        else
+        } else
             return false;
+    }
+
+    @Override
+    public boolean unBlockAUser(String username) {
+
+        db = this.getWritableDatabase();
+        db.execSQL("update users set blocked = 0 where username = '" + username + "'");
+        return true;
+
     }
 
     @Override

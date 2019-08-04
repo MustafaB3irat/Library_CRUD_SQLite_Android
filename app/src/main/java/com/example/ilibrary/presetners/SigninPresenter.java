@@ -22,4 +22,9 @@ public class SigninPresenter implements Signin.SignInPresenter {
     public Cursor signin(String username, String password) {
         return model.signin(username, password);
     }
+
+    @Override
+    public int getUserState(String username) {
+        return model.getUserState(username);
+    }
 }

@@ -26,11 +26,14 @@ public interface Signin {
     interface SignInModel {
 
         Cursor signin(String username, String password);
+        int getUserState(String username);
 
     }
 
     interface SignInPresenter {
 
         Cursor signin(String username, String password);
+
+        int getUserState(String username);
     }
 }

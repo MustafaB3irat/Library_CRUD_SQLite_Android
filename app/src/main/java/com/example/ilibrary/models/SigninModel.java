@@ -23,4 +23,9 @@ public class SigninModel implements Signin.SignInModel {
     public Cursor signin(String username, String password) {
         return databaseHelper.signIn(username, password);
     }
+
+    @Override
+    public int getUserState(String username) {
+        return databaseHelper.getUserStatus(username);
+    }
 }

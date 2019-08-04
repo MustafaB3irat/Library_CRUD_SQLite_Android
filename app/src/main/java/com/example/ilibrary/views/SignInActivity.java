@@ -90,7 +90,7 @@ public class SignInActivity extends AppCompatActivity implements Signin.SignInVi
                         intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
 
 
-                        User user = new User(cursor.getString(cursor.getColumnIndexOrThrow(USERNAME)), cursor.getColumnName(cursor.getColumnIndexOrThrow(PASSWORD)), cursor.getString(cursor.getColumnIndexOrThrow("email")), cursor.getString(cursor.getColumnIndexOrThrow("gender")), cursor.getInt(cursor.getColumnIndexOrThrow("age")));
+                        User user = new User(cursor.getString(cursor.getColumnIndexOrThrow(USERNAME)), cursor.getColumnName(cursor.getColumnIndexOrThrow(PASSWORD)), cursor.getString(cursor.getColumnIndexOrThrow("email")), cursor.getString(cursor.getColumnIndexOrThrow("gender")), cursor.getInt(cursor.getColumnIndexOrThrow("age")),cursor.getInt(cursor.getColumnIndexOrThrow("blocked")));
                         intent.putExtra("USER", user);
                         username = cursor.getString(cursor.getColumnIndexOrThrow(USERNAME));
                         startActivity(intent);

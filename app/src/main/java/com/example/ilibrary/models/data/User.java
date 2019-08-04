@@ -5,15 +5,24 @@ import java.io.Serializable;
 public class User implements Serializable {
 
     private String username, password, email, gender;
-    private int age;
+    private int age, blocked;
 
 
-    public User(String username, String password, String email, String gender, int age) {
+    public User(String username, String password, String email, String gender, int age, int blocked) {
         this.username = username;
         this.password = password;
         this.email = email;
         this.gender = gender;
         this.age = age;
+        this.blocked = blocked;
+    }
+
+    public int getBlocked() {
+        return blocked;
+    }
+
+    public void setBlocked(int blocked) {
+        this.blocked = blocked;
     }
 
     public User() {

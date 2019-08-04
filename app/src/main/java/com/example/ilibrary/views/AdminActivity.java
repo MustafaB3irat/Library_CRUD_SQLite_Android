@@ -15,6 +15,7 @@ import com.example.ilibrary.databinding.AdminActivityBinding;
 import com.example.ilibrary.databinding.SidebarHeaderBinding;
 import com.example.ilibrary.interfaces.Admin;
 import com.example.ilibrary.views.fragments.AboutUsFragment;
+import com.example.ilibrary.views.fragments.BlockUnBlockUserFragment;
 import com.example.ilibrary.views.fragments.MyCartFragment;
 import com.example.ilibrary.views.fragments.MyProfile;
 import com.example.ilibrary.views.fragments.ReservedBooksAdminFragment;
@@ -84,7 +85,7 @@ public class AdminActivity extends AppCompatActivity implements Admin.AdminView 
 
                 case R.id.block_unblock_users: {
                     ad.drawer.closeDrawer(GravityCompat.START);
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragments, new MyCartFragment()).commitNow();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragments, new BlockUnBlockUserFragment()).commitNow();
                     break;
                 }
 

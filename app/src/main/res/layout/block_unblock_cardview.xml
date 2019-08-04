@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="user"
+            type="com.example.ilibrary.models.data.User" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="25dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/block_avatar"
+            android:layout_width="85dp"
+            android:layout_height="85dp"
+            android:layout_margin="25dp"
+            android:src="@drawable/avatar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/username_block"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="@{user.username}"
+            android:textColor="@android:color/black"
+            android:textSize="19sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/block_avatar"
+            app:layout_constraintStart_toEndOf="@+id/block_avatar"
+            app:layout_constraintTop_toTopOf="@id/block_avatar" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="6dp"
+            android:text="Block"
+            android:textColor="@color/colorAccent"
+            android:textSize="19sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/block_switch"
+            app:layout_constraintEnd_toEndOf="@id/block_switch"
+            app:layout_constraintStart_toStartOf="@+id/block_switch" />
+
+        <com.github.angads25.toggle.widget.LabeledSwitch
+            android:id="@+id/block_switch"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:textSize="19sp"
+            app:colorBorder="@color/colorPrimaryDark"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/username_block"
+            app:layout_constraintTop_toTopOf="parent"
+            app:on="false" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

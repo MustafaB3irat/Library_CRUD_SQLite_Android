@@ -66,7 +66,6 @@ public class SignUpActivity extends AppCompatActivity implements SignUp.SignUpVi
         signUpBinding.signup.setOnClickListener(e -> {
 
             if (signUp()) {
-
                 Intent intent = new Intent(this, UserActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 SignInActivity.username = signUpBinding.username.getText().toString();
